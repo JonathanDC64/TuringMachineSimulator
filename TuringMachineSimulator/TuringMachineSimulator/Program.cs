@@ -46,7 +46,7 @@ namespace TuringMachineSimulator
 			M.AddTransition(new TransitionInput(q[1], '0'), new TransitionOutput(q[1], '0', Directions.Right));
 			M.AddTransition(new TransitionInput(q[1], 'Y'), new TransitionOutput(q[1], 'Y', Directions.Right));
 			M.AddTransition(new TransitionInput(q[1], '1'), new TransitionOutput(q[2], 'Y', Directions.Left));
-			M.AddTransition(new TransitionInput(q[2], 'Y'), new TransitionOutput(q[1], 'Y', Directions.Left));
+			M.AddTransition(new TransitionInput(q[2], 'Y'), new TransitionOutput(q[2], 'Y', Directions.Left));
 			M.AddTransition(new TransitionInput(q[2], '0'), new TransitionOutput(q[2], '0', Directions.Left));
 			M.AddTransition(new TransitionInput(q[2], 'X'), new TransitionOutput(q[0], 'X', Directions.Right));
 			M.AddTransition(new TransitionInput(q[0], 'Y'), new TransitionOutput(q[3], 'Y', Directions.Right));

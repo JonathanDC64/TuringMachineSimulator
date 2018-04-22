@@ -53,18 +53,23 @@ namespace TuringMachineSimulator
 				TransitionOutput output = transition_function.Transitions[transition_function.GetInput(current_state, tape_symbol)];
 				tape[pos] = output.Symbol;
 				pos += (output.Direction == Directions.Left) ? -1 : 1;
-				string dir = (output.Direction == Directions.Left) ? "Left" : "Right";
+				string dir = (output.Direction == Directions.Left) ? "<-" : "->";
 				current_state = output.State;
 				if (pos < 0)
 				{
 					tape.Insert(0, this.blank);
+					pos = 0;
 				}
 				else if(pos >= tape.Length)
 				{
 					tape.Insert(tape.Length, this.blank);
 				}
-				Console.WriteLine($"Current State is \'{prev_state.Name}\', Read a symbol \'{tape_symbol}\', Transitioned to state \'{current_state.Name}\', Wrote Symbol \'{output.Symbol}\', Moved Tape {dir}");
-				Console.WriteLine($"New State of tape : Pos is \'{pos}\', Content is : \'{tape.ToString()}\'");
+				//Console.WriteLine($"Current State is \'{prev_state.Name}\', Read a symbol \'{tape_symbol}\', Transitioned to state \'{current_state.Name}\', Wrote Symbol \'{output.Symbol}\', Moved Tape {dir}");
+				//Console.WriteLine($"Current State is \'{prev_state.Name}\', Read a symbol \'{tape_symbol}\', Transitioned to state \'{current_state.Name}\', Wrote Symbol \'{output.Symbol}\', Moved Tape {dir}");
+				Console.WriteLine($"({prev_state.Name},{tape_symbol}) = ({current_state.Name}, {output.Symbol}, {dir})");
+				//Console.WriteLine($"New State of tape : Pos is \'{pos}\', Content is : \'{tape.ToString()}\'");
+				Console.WriteLine($"{tape.ToString()}");
+				Console.WriteLine($"{new String(' ', pos)}^");
 				Console.WriteLine();
 
 				// String was accepted
