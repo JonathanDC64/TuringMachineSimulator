@@ -50,7 +50,17 @@ namespace TuringMachineSimulator
 			{
 				State prev_state = current_state;
 				char tape_symbol = tape[pos];
-				TransitionOutput output = transition_function.Transitions[transition_function.GetInput(current_state, tape_symbol)];
+				var key = transition_function.GetInput(current_state, tape_symbol);
+
+				if (key == null)
+				{
+					Console.WriteLine($"Machine was halted, trap state reached (Missing transition), Final contents : \'{tape.ToString()}\'");
+					return tape.ToString();
+				}
+
+				TransitionOutput output = transition_function.Transitions[key];
+				
+
 				tape[pos] = output.Symbol;
 				pos += (output.Direction == Directions.Left) ? -1 : 1;
 				string dir = (output.Direction == Directions.Left) ? "<-" : "->";

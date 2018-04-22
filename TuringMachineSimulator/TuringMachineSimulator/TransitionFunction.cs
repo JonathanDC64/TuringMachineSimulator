@@ -33,7 +33,16 @@ namespace TuringMachineSimulator
 
 		public TransitionInput GetInput(State state, char symbol)
 		{
-			return transition_inputs[new Tuple<State, char>(state, symbol)];
+			var key = new Tuple<State, char>(state, symbol);
+			if (transition_inputs.ContainsKey(key))
+			{
+				return transition_inputs[key];
+			}
+			else
+			{
+				return null;
+			}
+			
 		}
 	}
 }

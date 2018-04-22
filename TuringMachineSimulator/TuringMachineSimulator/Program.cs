@@ -53,7 +53,7 @@ namespace TuringMachineSimulator
 			M.AddTransition(new TransitionInput(q[3], 'Y'), new TransitionOutput(q[3], 'Y', Directions.Right));
 			M.AddTransition(new TransitionInput(q[3], blank), new TransitionOutput(q[4], blank, Directions.Right));
 
-			M.Execute("00001111", false);
+			M.Execute("0000111", false);
 
 			Console.WriteLine();
 		}
